@@ -58,7 +58,7 @@ class RowsLayout {
     }
     
     func layout() {
-        let tagViews = (0..<tagsView.layoutProperties.numberOfTags).flatMap { (index) -> TagView? in
+        let tagViews = (0..<tagsView.layoutProperties.numberOfTags).compactMap { (index) -> TagView? in
             return tagsView.tagViews[index]
         }
         let tagViewSizes = tagViews.map { $0.intrinsicContentSize }

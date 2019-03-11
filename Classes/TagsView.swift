@@ -45,11 +45,11 @@ open class TagsView: UIView {
     var supplementaryTagViewNib: UINib?
 
     var tagViews: [TagView] {
-        return subviews.flatMap { $0 as? TagView }
+        return subviews.compactMap { $0 as? TagView }
     }
     
     var supplementaryTagView: SupplementaryTagView? {
-        return subviews.flatMap { $0 as? SupplementaryTagView }.first
+        return subviews.compactMap { $0 as? SupplementaryTagView }.first
     }
     
     public override init(frame: CGRect) {
