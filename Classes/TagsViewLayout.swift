@@ -73,7 +73,7 @@ open class TagsViewLayout {
         let spacer = delegate?.spacerInTagsView(tagsView, layout: self) ?? .zero
         let alignment = delegate?.alignmentInTagsView(tagsView, layout: self) ?? .left
         
-        let tagViews = (0 ..< numberOfTags).flatMap { (index) -> TagView? in
+        let tagViews = (0 ..< numberOfTags).compactMap { (index) -> TagView? in
             return tagsView.dataSource?.tagsView(tagsView, viewForIndexAt: index)
         }
         

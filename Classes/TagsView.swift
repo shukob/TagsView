@@ -36,11 +36,11 @@ open class TagsView: UIView {
     fileprivate var containerView: UIView!
 
     fileprivate var tagViews: [TagView] {
-        return containerView.subviews.flatMap { $0 as? TagView }
+        return containerView.subviews.compactMap { $0 as? TagView }
     }
     
     fileprivate var supplymentaryTagView: SupplymentaryTagView? {
-        return containerView.subviews.flatMap { $0 as? SupplymentaryTagView }.first
+        return containerView.subviews.compactMap { $0 as? SupplymentaryTagView }.first
     }
     
     fileprivate var indexPath: IndexPath?
@@ -146,7 +146,7 @@ extension TagsView {
     
     fileprivate func reloadData(layout: TagsViewLayout) {
         let numberOfTags = layout.delegate?.numberOfTagsInTagsView(self, layout: layout) ?? 0
-        let tagViews = (0 ..< numberOfTags).flatMap { (index) -> TagView? in
+        let tagViews = (0 ..< numberOfTags).compactMap { (index) -> TagView? in
             return self.dataSource?.tagsView(self, viewForIndexAt: index)
         }
         
